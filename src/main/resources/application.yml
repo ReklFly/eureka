@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: service-eureka
+#  cloud:
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
+server:
+  port: 8761
+eureka:
+  #  instance:
+  #    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+
+hystrix:
+  metrics:
+    enabled: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
