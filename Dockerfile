@@ -14,12 +14,12 @@
 #RUN bash -c 'touch /app.jar'
 #ENTRYPOINT ["java","/app.jar"]
 
-FROM  java:8
+FROM  daocloud.io/java:8
 
 ADD target/*.jar app.jar
 
 VOLUME /tmp
 
-EXPOSE 80
+#EXPOSE 80
 
-ENTRYPOINT  ["java","/app.jar"]
+ENTRYPOINT  ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
